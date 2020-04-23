@@ -1,0 +1,30 @@
+<div *ngIf="global" class="container-fluid">
+    <div class="row">
+        <div class="col-xl">
+            <app-card  [type]="'infected'" [nombre]="global.cases" ></app-card>
+        </div>
+        <div class="col-xl">
+            <app-card  [type]="'Mort'" [nombre]="global.deaths" ></app-card>
+        </div>
+        <div class="col-xl">
+            <app-card  [type]="'gueries'" [nombre]="global.recovered" ></app-card>
+        </div>
+    </div>
+    <div >
+        <div class="row">
+    
+        <div class="col-4">
+            <app-listcountries></app-listcountries>
+        </div>
+
+        <div class="col-8" >
+            <app-line-chart></app-line-chart>     
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

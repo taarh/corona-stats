@@ -1,0 +1,33 @@
+<h2>Countries</h2>
+<div>
+<div class="form-group">
+  <input #searchBox id="search-box" class="form-control" (input)="search(searchBox.value)" />
+</div>
+<perfect-scrollbar style="height:500px" *ngIf="!found &&!selectedCountry || searchBox.value==''" >
+  <div class="list-group overflow-auto"  *ngFor="let country of countries">  
+    <a  (click)="onSelect(country)" [routerLink]="[ '/country', country.country.toLowerCase() ]"  class="list-group-item list-group-item-action flex-column align-items-start" [class.active]='activeCountry==country'   >
+      <div class="d-flex w-100 justify-content-between">
+        <p class="mb-1"><strong class="text-dark">{{country.country}}</strong></p>
+      <small>3 days ago</small>
+      </div>
+      <p class="mb-1"> <span  class="green-text">{{country.cases}} Cases </span> && <span class="red-text">{{country.deaths}} Deaths</span> </p>
+    </a>
+    
+  </div>
+</perfect-scrollbar>
+<div *ngIf="found && selectedCountry">
+
+    <div class="list-group">
+    <a   class="list-group-item list-group-item-action flex-column align-items-start " [routerLink]="[ '/country', selectedCountry.country.toLowerCase() ]">
+      <div class="d-flex w-100 justify-content-between">
+        <p class="mb-1"><strong class="text-dark">{{selectedCountry.country}}</strong></p>
+      <small>3 days ago</small>
+      </div>
+      <p class="mb-1"> <span  class="green-text">{{selectedCountry.cases}} Cases </span> && <span class="red-text">{{selectedCountry.deaths}} Deaths</span> </p>
+    </a>
+    </div>
+     
+
+</div>
+
+

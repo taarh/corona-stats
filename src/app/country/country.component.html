@@ -1,0 +1,37 @@
+
+
+  <div *ngIf="global" class="container-fluid">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-xl-3">
+            <app-card  [type]="'infected'" [nombre]="global.cases" ></app-card>
+        </div>
+        <div class="col-xl-3">
+            <app-card  [type]="'Mort'" [nombre]="global.deaths" ></app-card>
+        </div>
+        <div class="col-xl-3">
+            <app-card  [type]="'gueries'" [nombre]="global.recovered" ></app-card>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+                <h2  class="text-center">RADAR</h2>
+                <app-radar [chartDatasets]="chartDatasetRadar" [chartLabels]="chartLabelsRadar"></app-radar>
+        </div>
+        <div class="col-8">
+            <div  *ngIf="chartReady"  >
+                <h2  class="text-center">History infections</h2>
+                <canvas mdbChart class="lineChart"
+                    [chartType]="chartType"
+                    [datasets]="chartDatasets"
+                    [labels]="chartLabels"
+                    [colors]="chartColors"
+                    [options]="chartOptions"
+                    [legend]="true"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)">
+                </canvas>
+            </div>
+        </div>
+    </div>
+</div>
